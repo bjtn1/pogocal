@@ -1,4 +1,2 @@
 credentials.json
-./token.json
-./google-cal-api.py
-./src/geckodriver.log
+token.json
