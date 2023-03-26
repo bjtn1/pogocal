@@ -142,7 +142,7 @@ def main():
         link = f"https://leekduck.com{span.find('a').get('href')}"
         links.add(link)
 
-    # fix all of this pls thx
+    # FIX all of this pls thx
     driver.quit()
     exit(0)
 
