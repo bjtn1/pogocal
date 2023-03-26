@@ -1,0 +1,695 @@
+1677833263658	geckodriver	INFO	Listening on 127.0.0.1:52271
+1677833264175	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--headless" "--remote-debugging-port" ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile8Hq36J"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677833264476	Marionette	INFO	Marionette enabled
+1677833264544	Marionette	INFO	Listening on port 52279
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52272
+Read port: 52279
+1677833264669	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile8Hq36J/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52272/devtools/browser/29f3d846-c223-4d46-9c5a-b1a13496d06f
+1677833265753	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677833267031	Marionette	INFO	Stopped listening on port 52279
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677833336440	geckodriver	INFO	Listening on 127.0.0.1:52350
+1677833336841	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--headless" "--remote-debugging-port" "52351" "--remote-allow-hosts" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilep9Nay7"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677833337190	Marionette	INFO	Marionette enabled
+1677833337251	Marionette	INFO	Listening on port 52358
+Read port: 52358
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52351
+1677833337360	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilep9Nay7/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52351/devtools/browser/f0f9d2da-aac5-4a51-891b-9e7c0321637b
+1677833338344	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677833340014	Marionette	INFO	Stopped listening on port 52358
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677833588670	geckodriver	INFO	Listening on 127.0.0.1:52461
+1677833589056	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--headless" "--remote-debugging-port" ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiler3HEqQ"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677833589439	Marionette	INFO	Marionette enabled
+1677833589507	Marionette	INFO	Listening on port 52471
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52462
+Read port: 52471
+1677833589630	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiler3HEqQ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52462/devtools/browser/baf1414c-c71e-4e6a-ae7e-fb0abf54ee15
+1677833590719	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677833592080	Marionette	INFO	Stopped listening on port 52471
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677834013575	geckodriver	INFO	Listening on 127.0.0.1:52557
+1677834013710	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--headless" "--remote-debugging-port" ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileJzJh6C"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677834015029	Marionette	INFO	Marionette enabled
+1677834015174	Marionette	INFO	Listening on port 52565
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52558
+Read port: 52565
+1677834015417	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileJzJh6C/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52558/devtools/browser/70ef8651-79d3-4ee0-b9d9-715d53a47988
+1677834016659	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677834018114	Marionette	INFO	Stopped listening on port 52565
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677834101183	geckodriver	INFO	Listening on 127.0.0.1:52649
+1677834101701	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52650" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileOEfuBP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677834102031	Marionette	INFO	Marionette enabled
+1677834102123	Marionette	INFO	Listening on port 52657
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52650
+Read port: 52657
+1677834102365	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileOEfuBP/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52650/devtools/browser/031ead3f-fac8-427f-af0b-b17db22ff20e
+JavaScript error: https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js, line 1: Error: No ad placements found.
+JavaScript error: resource:///actors/FormValidationChild.sys.mjs, line 178: TypeError: this._element is null
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.python.org."
+1677834104250	Marionette	INFO	Stopped listening on port 52657
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677863170403	geckodriver	INFO	Listening on 127.0.0.1:53426
+1677863170922	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53427" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileQFhlF2"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677863171453	Marionette	INFO	Marionette enabled
+1677863171635	Marionette	INFO	Listening on port 53434
+Read port: 53434
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:53427
+1677863171809	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileQFhlF2/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53427/devtools/browser/1ddd8f2e-03ad-49cf-bf70-06c5f3bc3034
+JavaScript error: https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js, line 1: Error: No ad placements found.
+JavaScript error: resource:///actors/FormValidationChild.sys.mjs, line 178: TypeError: this._element is null
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.python.org."
+1677863174406	Marionette	INFO	Stopped listening on port 53434
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677863256565	geckodriver	INFO	Listening on 127.0.0.1:53482
+1677863257085	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53483" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileuwKTCM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677863257390	Marionette	INFO	Marionette enabled
+1677863257465	Marionette	INFO	Listening on port 53490
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53490
+WebDriver BiDi listening on ws://127.0.0.1:53483
+1677863257565	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileuwKTCM/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53483/devtools/browser/860b981f-607e-469f-b30a-4faa94b7b4f7
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+1677863260562	Marionette	INFO	Stopped listening on port 53490
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677863418735	geckodriver	INFO	Listening on 127.0.0.1:53573
+1677863419255	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53574" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileo66vJf"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677863419558	Marionette	INFO	Marionette enabled
+1677863419635	Marionette	INFO	Listening on port 53581
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53581
+WebDriver BiDi listening on ws://127.0.0.1:53574
+1677863419734	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileo66vJf/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53574/devtools/browser/9c1bf114-fef6-4035-bd8b-0d81563550a1
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+1677863422948	Marionette	INFO	Stopped listening on port 53581
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677919935141	geckodriver	INFO	Listening on 127.0.0.1:50423
+1677919935605	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50424" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileFN7R0n"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677919936033	Marionette	INFO	Marionette enabled
+1677919936173	Marionette	INFO	Listening on port 50432
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50432
+WebDriver BiDi listening on ws://127.0.0.1:50424
+1677919936310	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileFN7R0n/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50424/devtools/browser/5daedb43-08f6-46c3-822b-3d8274c9658b
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+1677919940093	Marionette	INFO	Stopped listening on port 50432
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677919998940	geckodriver	INFO	Listening on 127.0.0.1:50485
+1677919999448	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50486" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile9Lbguo"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677919999741	Marionette	INFO	Marionette enabled
+1677919999819	Marionette	INFO	Listening on port 50493
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50493
+WebDriver BiDi listening on ws://127.0.0.1:50486
+1677919999922	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile9Lbguo/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50486/devtools/browser/61dec29a-add1-4295-a7da-66046751244e
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+1677920003072	Marionette	INFO	Stopped listening on port 50493
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677920148187	geckodriver	INFO	Listening on 127.0.0.1:50616
+1677920148694	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50617" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilecckOQg"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677920148978	Marionette	INFO	Marionette enabled
+1677920149054	Marionette	INFO	Listening on port 50624
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50624
+WebDriver BiDi listening on ws://127.0.0.1:50617
+1677920149170	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilecckOQg/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50617/devtools/browser/6708333e-5d06-43fc-b8a0-9563f71e8195
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+JavaScript error: https://leekduck.com.events/js/main.js, line 40: ReferenceError: WOW is not defined
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677920205028	Marionette	INFO	Stopped listening on port 50624
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1677920239863	geckodriver	INFO	Listening on 127.0.0.1:50716
+1677920240371	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50717" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilegoVBrr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677920240665	Marionette	INFO	Marionette enabled
+1677920240739	Marionette	INFO	Listening on port 50722
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50722
+WebDriver BiDi listening on ws://127.0.0.1:50717
+1677920240847	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilegoVBrr/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50717/devtools/browser/111fdd16-7903-49b2-aa01-47dfccfb504c
+1677920242084	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677920243105	Marionette	INFO	Stopped listening on port 50722
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677920588199	geckodriver	INFO	Listening on 127.0.0.1:50829
+1677920588707	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50830" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiletpvGIl"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677920588999	Marionette	INFO	Marionette enabled
+1677920589075	Marionette	INFO	Listening on port 50835
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50835
+WebDriver BiDi listening on ws://127.0.0.1:50830
+1677920589180	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiletpvGIl/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50830/devtools/browser/44c5e3d4-33ac-4dfa-beb8-fef62c3b47d2
+1677920590470	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677920591371	Marionette	INFO	Stopped listening on port 50835
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677920786523	geckodriver	INFO	Listening on 127.0.0.1:50952
+1677920787031	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "50953" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileHDQ3ag"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677920787322	Marionette	INFO	Marionette enabled
+1677920787397	Marionette	INFO	Listening on port 50958
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 50958
+WebDriver BiDi listening on ws://127.0.0.1:50953
+1677920787506	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileHDQ3ag/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50953/devtools/browser/f04d8001-4b38-48c8-ad4a-1e18bf079069
+1677920788713	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677920789591	Marionette	INFO	Stopped listening on port 50958
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677921585264	geckodriver	INFO	Listening on 127.0.0.1:51052
+1677921585773	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51053" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilerBUaPU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677921586159	Marionette	INFO	Marionette enabled
+1677921586267	Marionette	INFO	Listening on port 51058
+Read port: 51058
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:51053
+1677921586369	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilerBUaPU/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51053/devtools/browser/6329a81d-31e4-4d9c-8b86-e567371d3047
+1677921587715	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677921588749	Marionette	INFO	Stopped listening on port 51058
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677921701639	geckodriver	INFO	Listening on 127.0.0.1:51123
+1677921702148	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51124" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiledKdpqp"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677921702438	Marionette	INFO	Marionette enabled
+1677921702516	Marionette	INFO	Listening on port 51129
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51129
+WebDriver BiDi listening on ws://127.0.0.1:51124
+1677921702619	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiledKdpqp/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51124/devtools/browser/b0470a60-e128-4e7e-98fe-527d0ca2d92c
+1677921703759	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677921704853	Marionette	INFO	Stopped listening on port 51129
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677921795363	geckodriver	INFO	Listening on 127.0.0.1:51194
+1677921795871	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51195" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile6S8SzM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677921796161	Marionette	INFO	Marionette enabled
+1677921796239	Marionette	INFO	Listening on port 51200
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51200
+WebDriver BiDi listening on ws://127.0.0.1:51195
+1677921796350	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile6S8SzM/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51195/devtools/browser/89250473-d8ca-4e27-ba14-62b1f5054fe2
+1677921797600	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677921815942	geckodriver	INFO	Listening on 127.0.0.1:51266
+1677921816449	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51267" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile18RWiq"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677921816738	Marionette	INFO	Marionette enabled
+1677921816821	Marionette	INFO	Listening on port 51272
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51272
+WebDriver BiDi listening on ws://127.0.0.1:51267
+1677921816925	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile18RWiq/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51267/devtools/browser/0a06c077-e659-4a79-83c0-c3df95cf9be3
+1677921818146	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677921819161	Marionette	INFO	Stopped listening on port 51272
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677921870507	geckodriver	INFO	Listening on 127.0.0.1:51340
+1677921871014	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51341" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileZhVWZ4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677921871308	Marionette	INFO	Marionette enabled
+1677921871385	Marionette	INFO	Listening on port 51346
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51346
+WebDriver BiDi listening on ws://127.0.0.1:51341
+1677921871494	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileZhVWZ4/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51341/devtools/browser/ac80361f-83e6-4eb9-a2e8-7abb967d541d
+1677921872782	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677921873861	Marionette	INFO	Stopped listening on port 51346
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677922303029	geckodriver	INFO	Listening on 127.0.0.1:51437
+1677922303545	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51438" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileuI8YjG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677922303839	Marionette	INFO	Marionette enabled
+1677922303912	Marionette	INFO	Listening on port 51443
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51443
+WebDriver BiDi listening on ws://127.0.0.1:51438
+1677922304009	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileuI8YjG/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51438/devtools/browser/00bcc78f-8550-4283-bdb0-f3221c71bde4
+1677922305289	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677922306216	Marionette	INFO	Stopped listening on port 51443
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677922337562	geckodriver	INFO	Listening on 127.0.0.1:51509
+1677922338068	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51510" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileTdMNLu"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677922338357	Marionette	INFO	Marionette enabled
+1677922338433	Marionette	INFO	Listening on port 51515
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51515
+WebDriver BiDi listening on ws://127.0.0.1:51510
+1677922338539	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileTdMNLu/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51510/devtools/browser/c9a9f260-ff7a-47c6-ab38-310210109ec4
+1677922339736	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677922350319	Marionette	INFO	Stopped listening on port 51515
+1677922373546	geckodriver	INFO	Listening on 127.0.0.1:51582
+1677922374051	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51583" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileT94J96"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677922374338	Marionette	INFO	Marionette enabled
+1677922374416	Marionette	INFO	Listening on port 51588
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51588
+WebDriver BiDi listening on ws://127.0.0.1:51583
+1677922374524	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileT94J96/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51583/devtools/browser/55c73f94-d975-4307-b416-9c1f24e675b9
+1677922375749	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677922376988	Marionette	INFO	Stopped listening on port 51588
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677922605148	geckodriver	INFO	Listening on 127.0.0.1:51695
+1677922605664	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51696" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileZ1TqKx"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677922605958	Marionette	INFO	Marionette enabled
+1677922606030	Marionette	INFO	Listening on port 51701
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51701
+WebDriver BiDi listening on ws://127.0.0.1:51696
+1677922606127	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileZ1TqKx/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51696/devtools/browser/f7aa0e50-ad5a-48ea-8b09-fa7619ab5813
+1677922607321	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677922618072	Marionette	INFO	Stopped listening on port 51701
+1677923416919	geckodriver	INFO	Listening on 127.0.0.1:51833
+1677923417423	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51834" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilek0MtVf"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923417716	Marionette	INFO	Marionette enabled
+1677923417794	Marionette	INFO	Listening on port 51839
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51839
+WebDriver BiDi listening on ws://127.0.0.1:51834
+1677923417903	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilek0MtVf/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51834/devtools/browser/3b184151-34d4-4ce9-a74e-654160e603af
+1677923419206	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677923452716	geckodriver	INFO	Listening on 127.0.0.1:51906
+1677923453220	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51907" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilerQaxtg"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923453516	Marionette	INFO	Marionette enabled
+1677923453592	Marionette	INFO	Listening on port 51912
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 51912
+WebDriver BiDi listening on ws://127.0.0.1:51907
+1677923453702	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilerQaxtg/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51907/devtools/browser/c8f65604-8b8d-4542-b060-1fcfde239e40
+1677923454957	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677923536725	geckodriver	INFO	Listening on 127.0.0.1:51984
+1677923537236	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "51985" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileAJ1ixJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923537566	Marionette	INFO	Marionette enabled
+1677923537647	Marionette	INFO	Listening on port 51990
+Read port: 51990
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:51985
+1677923537758	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileAJ1ixJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51985/devtools/browser/474acf00-3918-4770-b80f-9519fed1d14f
+1677923538998	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677923605100	geckodriver	INFO	Listening on 127.0.0.1:52058
+1677923605606	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52059" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilekaEP4j"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923605922	Marionette	INFO	Marionette enabled
+1677923606010	Marionette	INFO	Listening on port 52064
+Read port: 52064
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52059
+1677923606106	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilekaEP4j/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52059/devtools/browser/223d4aad-299b-4f96-9bb5-b9667f1d805c
+1677923607406	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677923659911	geckodriver	INFO	Listening on 127.0.0.1:52129
+1677923660421	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52130" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileUG548x"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923660744	Marionette	INFO	Marionette enabled
+1677923660829	Marionette	INFO	Listening on port 52135
+Read port: 52135
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52130
+1677923660933	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileUG548x/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52130/devtools/browser/83196bf8-396d-4883-a79f-bc06d57da495
+1677923662206	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677923709601	geckodriver	INFO	Listening on 127.0.0.1:52202
+1677923710108	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52203" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilewsUtH7"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677923710416	Marionette	INFO	Marionette enabled
+1677923710499	Marionette	INFO	Listening on port 52208
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 52208
+WebDriver BiDi listening on ws://127.0.0.1:52203
+1677923710605	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilewsUtH7/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52203/devtools/browser/032974e1-c355-4bff-8bda-b6d134ec8c61
+1677923711868	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677962028707	Marionette	INFO	Stopped listening on port 52208
+1677962029600	Marionette	INFO	Stopped listening on port 51200
+!!! error running onStopped callback: TypeError: callback is not a function
+1677962032097	Marionette	INFO	Stopped listening on port 51839
+1677962034476	Marionette	INFO	Stopped listening on port 51912
+1677962038113	Marionette	INFO	Stopped listening on port 51990
+1677962040094	Marionette	INFO	Stopped listening on port 52064
+1677962042417	Marionette	INFO	Stopped listening on port 52135
+1677964750132	geckodriver	INFO	Listening on 127.0.0.1:52896
+1677964750604	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52897" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileHB6q21"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677964750974	Marionette	INFO	Marionette enabled
+1677964751097	Marionette	INFO	Listening on port 52902
+Read port: 52902
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+WebDriver BiDi listening on ws://127.0.0.1:52897
+1677964751224	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileHB6q21/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52897/devtools/browser/a60d1bb1-39a3-452a-a7ee-cc47854e481c
+1677964752622	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677964777453	geckodriver	INFO	Listening on 127.0.0.1:52967
+1677964777956	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "52968" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiletBDTAj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677964778251	Marionette	INFO	Marionette enabled
+1677964778337	Marionette	INFO	Listening on port 52973
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 52973
+WebDriver BiDi listening on ws://127.0.0.1:52968
+1677964778432	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofiletBDTAj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52968/devtools/browser/cb95d7ff-01af-4b92-ba6f-c1b3847477ae
+1677964779676	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1677964968733	geckodriver	INFO	Listening on 127.0.0.1:53129
+1677964969253	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53130" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile2o9Nn0"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677964969553	Marionette	INFO	Marionette enabled
+1677964969628	Marionette	INFO	Listening on port 53135
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53135
+WebDriver BiDi listening on ws://127.0.0.1:53130
+1677964969725	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofile2o9Nn0/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53130/devtools/browser/9e0762f7-d38a-47b4-b75f-4572f4966e24
+1677964970871	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677965036395	Marionette	INFO	Stopped listening on port 52902
+1677965038638	Marionette	INFO	Stopped listening on port 52973
+1677965040222	Marionette	INFO	Stopped listening on port 53135
+1677965422756	geckodriver	INFO	Listening on 127.0.0.1:53235
+1677965423263	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53236" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilena91C8"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677965423559	Marionette	INFO	Marionette enabled
+1677965423635	Marionette	INFO	Listening on port 53241
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53241
+WebDriver BiDi listening on ws://127.0.0.1:53236
+1677965423743	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilena91C8/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53236/devtools/browser/2e3b2b67-4b99-4916-9bca-9ace742a4cf1
+1677965424876	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677965426029	Marionette	INFO	Stopped listening on port 53241
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677966459275	geckodriver	INFO	Listening on 127.0.0.1:53323
+1677966459784	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53324" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilevIceI6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677966460077	Marionette	INFO	Marionette enabled
+1677966460164	Marionette	INFO	Listening on port 53329
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53329
+WebDriver BiDi listening on ws://127.0.0.1:53324
+1677966460263	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilevIceI6/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53324/devtools/browser/4dba835a-4a3b-4d46-9f3a-5674b8c3627e
+1677966461447	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677966462562	Marionette	INFO	Stopped listening on port 53329
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677966519900	geckodriver	INFO	Listening on 127.0.0.1:53393
+1677966520403	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53394" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilepJw3q6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677966520693	Marionette	INFO	Marionette enabled
+1677966520773	Marionette	INFO	Listening on port 53399
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53399
+WebDriver BiDi listening on ws://127.0.0.1:53394
+1677966520882	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilepJw3q6/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53394/devtools/browser/83201db3-56fc-48b0-8e99-f5873508eab0
+1677966522158	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677966523028	Marionette	INFO	Stopped listening on port 53399
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677966555034	geckodriver	INFO	Listening on 127.0.0.1:53461
+1677966555541	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53462" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileP7hoP5"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677966555830	Marionette	INFO	Marionette enabled
+1677966555904	Marionette	INFO	Listening on port 53467
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53467
+WebDriver BiDi listening on ws://127.0.0.1:53462
+1677966556018	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileP7hoP5/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53462/devtools/browser/d5847eab-055a-4215-a68a-510429eb0205
+1677966557260	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677966558396	Marionette	INFO	Stopped listening on port 53467
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677966727069	geckodriver	INFO	Listening on 127.0.0.1:53537
+1677966727575	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53538" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileeM6mFR"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677966727881	Marionette	INFO	Marionette enabled
+1677966727964	Marionette	INFO	Listening on port 53543
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53543
+WebDriver BiDi listening on ws://127.0.0.1:53538
+1677966728077	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileeM6mFR/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53538/devtools/browser/9c011a53-10d8-45c0-84ea-bccfd3059632
+1677966729314	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677966730253	Marionette	INFO	Stopped listening on port 53543
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677966775880	geckodriver	INFO	Listening on 127.0.0.1:53608
+1677966776388	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53609" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileiiApLA"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677966776675	Marionette	INFO	Marionette enabled
+1677966776765	Marionette	INFO	Listening on port 53614
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53614
+WebDriver BiDi listening on ws://127.0.0.1:53609
+1677966776870	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileiiApLA/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53609/devtools/browser/8c0424a4-e994-4d57-a0e4-eef627054293
+1677966778095	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677966779013	Marionette	INFO	Stopped listening on port 53614
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 693: TypeError: this.tablesData[table] is undefined
+JavaScript error: resource://services-settings/Utils.jsm, line 237: TypeError: NetworkError: Network request failed
+1677967174553	geckodriver	INFO	Listening on 127.0.0.1:53686
+1677967175070	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53687" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileEcax2D"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677967175370	Marionette	INFO	Marionette enabled
+1677967175443	Marionette	INFO	Listening on port 53692
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53692
+WebDriver BiDi listening on ws://127.0.0.1:53687
+1677967175543	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileEcax2D/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53687/devtools/browser/486429e2-0fef-4f2e-b61f-b8b916df3937
+1677967176642	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677967258063	geckodriver	INFO	Listening on 127.0.0.1:53779
+1677967258571	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "53780" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilewRlvMU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677967258868	Marionette	INFO	Marionette enabled
+1677967258948	Marionette	INFO	Listening on port 53785
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 53785
+WebDriver BiDi listening on ws://127.0.0.1:53780
+1677967259055	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilewRlvMU/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53780/devtools/browser/fe26dcf7-0af4-4d26-9657-f9f85d19a41c
+1677967260278	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677970750973	Marionette	INFO	Stopped listening on port 53692
+1677970753767	Marionette	INFO	Stopped listening on port 53785
+1677971792180	geckodriver	INFO	Listening on 127.0.0.1:54086
+1677971792685	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54087" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilesVxxgk"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677971793174	Marionette	INFO	Marionette enabled
+1677971793333	Marionette	INFO	Listening on port 54092
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 54092
+WebDriver BiDi listening on ws://127.0.0.1:54087
+1677971793477	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilesVxxgk/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54087/devtools/browser/3da52441-5e8e-4f88-857f-5445628eae03
+1677971794996	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677971873197	geckodriver	INFO	Listening on 127.0.0.1:54158
+1677971873705	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54159" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileLQn2dE"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677971874009	Marionette	INFO	Marionette enabled
+1677971874088	Marionette	INFO	Listening on port 54164
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 54164
+WebDriver BiDi listening on ws://127.0.0.1:54159
+1677971874191	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofileLQn2dE/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54159/devtools/browser/093b44ae-87b8-4c66-878d-098fd92c7f52
+1677971875453	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677971890617	geckodriver	INFO	Listening on 127.0.0.1:54229
+1677971891127	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "--remote-debugging-port" "54230" "--r ... s" "localhost" "-foreground" "-no-remote" "-profile" "/var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilelmCOR9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1677971891412	Marionette	INFO	Marionette enabled
+1677971891493	Marionette	INFO	Listening on port 54235
+console.error: "Warning: unrecognized command line flag -remote-allow-hosts\n"
+Read port: 54235
+WebDriver BiDi listening on ws://127.0.0.1:54230
+1677971891599	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /var/folders/d8/rksbfpmx67557qq3x_j7_v9w0000gn/T/rust_mozprofilelmCOR9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54230/devtools/browser/7168232e-78cf-41a6-8a50-b005497af1a4
+1677971892874	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://leekduck.com/events/, line 1: ReferenceError: checkUserAgent is not defined
+1677972314876	Marionette	INFO	Stopped listening on port 54092
+1677972316418	Marionette	INFO	Stopped listening on port 54164
+1677972317854	Marionette	INFO	Stopped listening on port 54235
