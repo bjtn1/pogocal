@@ -32,14 +32,16 @@ def parse_date(date: str) -> str:
 
 
 def event_ends_next_year(start_date: str, end_date: str):
-    """Returns true if an event with `start_date` and `end_date` ends next year (starts in December and ends after December)"""
+    """Returns true if an event with `start_date` and `end_date` ends next year
+    (starts in December and ends after December)"""
     start_month = start_date[5:7]
     end_month = end_date[5:7]
     return int(start_month) == 12 and int(end_month) < 12
 
 
 def is_all_day_event(start_date: str, end_date: str):
-    """Returns true if an event with `start_date` and `end_date` is an all day event (starts at 00:00:00 and ends at 23:59:00 on the same day)"""
+    """Returns true if an event with `start_date` and `end_date` is an all day
+    event (starts at 00:00:00 and ends at 23:59:00 on the same day)"""
     start_month_and_day = start_date[5:10]
     end_month_and_day = end_date[5:10]
     start_time = start_date[11:]
@@ -129,21 +131,32 @@ def main():
     # Save the `url`'s html to be parsed later'
     soup = BeautifulSoup(driver.page_source, "html5lib")
 
-    soup = soup.find_all("div", class_="current-events")[0]  # noqa This is the html of everything under within <div class="events-list" "current-events">
+    # Html of everything within <div class="events-list" "current-events">
+    soup = soup.find_all("div", class_="current-events")[0]
+
+    # List of all the spans under <div class="events-list" "current-events">
     soup = soup.find_all(
         "span",
         class_="event-header-item-wrapper"
-    )  # This is a list of all the spans under <div class="events-list" "current-events">
+    )
 
     links = set()
 
     # Span refers to each html block containing the <a> tag we're looking for
+    # Let's get rid of all the unannounced events
     for span in soup:
-        link = f"https://leekduck.com{span.find('a').get('href')}"
+        event_name = span.find("a").get("href")
+        if "unannounced" in event_name:
+            continue
+        link = f"https://leekduck.com{event_name}"
         links.add(link)
 
-    # FIX all of this pls thx
     driver.quit()
+
+    for link in links:
+        print(link)
+
+    # FIX all of this pls thx
     exit(0)
 
     # Get the html of all <div>'s whose css-selector is "events-list"
