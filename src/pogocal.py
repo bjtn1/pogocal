@@ -140,7 +140,7 @@ def main():
         class_="event-header-item-wrapper"
     )
 
-    links = set()
+    event_links = set()
 
     # Span refers to each html block containing the <a> tag we're looking for
     # Let's get rid of all the unannounced events
@@ -149,36 +149,10 @@ def main():
         if "unannounced" in event_name:
             continue
         link = f"https://leekduck.com{event_name}"
-        links.add(link)
+        event_links.add(link)
 
-    driver.quit()
-
-    for link in links:
-        print(link)
-
-    # FIX all of this pls thx
-    exit(0)
-
-    # Get the html of all <div>'s whose css-selector is "events-list"
-    soup = soup.find("div", class_="events-list.current-events")
-
-    # Get the html of all <span> tags within the <div> tags whose css-selector is "events-list"
-    event_spans = soup.find_all("span")  # type: ignore
-
-    # Create a set to store event links in
-    event_links = set()
-
-    # get the `href`'s value from all the <a> tags within <div><span></span></div> from before and store them in the set
-    for span in event_spans:
-        links = span.find_all("a")
-        for link in links:
-            event_link = url + link["href"].replace("/events", "")
-            event_links.add(event_link)
-
-    # Go to every link, get the end and start dates of the event
+    # TODO Go to every link, get the end and start dates of the event
     for link in event_links:
-        if "unannounced" in link:
-            continue
 
         driver.get(link)
         soup = BeautifulSoup(driver.page_source, "html5lib")
