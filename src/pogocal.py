@@ -1,19 +1,31 @@
-from collections import defaultdict
+import os
 from dataclasses import dataclass, field
 from datetime import datetime
 from unicodedata import normalize
 
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-green_check_mark = "\U00002705"
-red_cross_mark = "\U0000274C"
+# NOTE when the token expires, just go to the credentials tab in google cloud projects, delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0
 
-current_year = datetime.now().year
+POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
+
+# If modifying these scopes, delete the file token.json.
+SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
+
+GREEN_CHECK_MARK = "\U00002705"
+RED_CROSS_MARK = "\U0000274C"
+
+CURRENT_YEAR = datetime.now().year
 
 
 def parse_date(date: str) -> str:
@@ -27,7 +39,7 @@ def parse_date(date: str) -> str:
     month = datetime_obj.strftime("%m")
     time = datetime_obj.strftime("%H:%M")
 
-    parsed_date = f"{current_year}-{month}-{day} {time}:00"
+    parsed_date = f"{CURRENT_YEAR}-{month}-{day} {time}:00"
 
     return parsed_date
 
@@ -117,6 +129,9 @@ class Event:
 
         return metadata
 
+    def get_summary(self):
+        return self.summary
+
     def __str__(self):
         return str(self.to_dict())
 
@@ -152,7 +167,7 @@ def main():
         link = f"https://leekduck.com{event_name}"
         event_links.add(link)
 
-    # TODO Go to every link, get the end and start dates of the event
+    # Go to every link, get the end and start dates of the event
     for link in event_links:
 
         driver.get(link)
@@ -194,11 +209,6 @@ def main():
 
         complete_end_date = f"{end_date}, {end_time}"
 
-        # TODO double check that you only add events that have a start and an end date
-        # TODO add the fucking google calendar shit
-        # TODO maybe see if you can add these to notion too? idk
-        print(f"{green_check_mark}  {link}: {complete_start_date} - {complete_end_date}")
-
         if start_date != "None":
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
@@ -206,8 +216,14 @@ def main():
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
             events.append(new_event)
 
+    # TODO ADD GOOGLE SHIT HERE
+
     for event in events:
-        print(event.to_dict())
+        # TODO add events that aren't already in google clanedar to google calendar
+        print(event.get_summary())
+        pass
+
+
 
     driver.quit()
 
