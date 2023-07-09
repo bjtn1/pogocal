@@ -206,10 +206,16 @@ def main():
         link = f"https://leekduck.com{event_name}"
         event_links.add(link)
 
+    # Output formatting sheannigans
+    links_parsed = 0
+
     # Go to every link, get the end and start dates of the event
     for link in event_links:
+        # Output formatting shenanigans
+        total_links = len(event_links) - 1
+        formatted_links_parsed = f"0{links_parsed}" if links_parsed < 10 else f"{links_parsed}"
 
-        print(f"Parsing {link}... ", end="", flush=True)
+        print(f"\r[{formatted_links_parsed}/{total_links}] Parsing {link}... ", end="", flush=True)
 
         driver.get(link)
         soup = BeautifulSoup(driver.page_source, "html5lib")
@@ -254,12 +260,15 @@ def main():
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
-            print(f"\r{GREEN_CHECK_MARK}  Done parsing {link}", end="\n", flush=True)
+
+            print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", flush=True)
 
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
             events.append(new_event)
+            links_parsed += 1
 
     # NOTE THIS IS WHERE WE ADD EVENTS TO THE CALENDAR
+    exit(0)
     try:
         service = build("calendar", "v3", credentials=creds)
 
