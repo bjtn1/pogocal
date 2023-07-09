@@ -20,7 +20,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
+# For a full list of scopes, see 
+# https://developers.google.com/identity/protocols/oauth2/scopes#calendar
+SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 GREEN_CHECK_MARK = "\U00002705"
 RED_CROSS_MARK = "\U0000274C"
@@ -97,15 +99,18 @@ class Event:
             metadata = {
                 "summary": self.summary,
                 "description": self.description,
-                "start": {"date": self.start_time},
-                "end": {"date": self.end_time},
+                "start": {
+                    "date": self.start_time
+                },
+                "end": {
+                    "date": self.end_time
+                },
             }
 
         elif event_ends_next_year(self.start_time, self.end_time):
             self.start_time = convert_to_rfc3339(self.start_time)
 
             # add one to end_time's year
-
             end_time_date_object = datetime.strptime(self.end_time, "%Y-%m-%d %H:%M:%S")
             end_time_date_object = end_time_date_object + relativedelta(year=1)
 
@@ -115,16 +120,31 @@ class Event:
             metadata = {
                 "summary": self.summary,
                 "description": self.description,
-                "start": {"dateTime": self.start_time, "timeZone": "UTC-5"},
-                "end": {"dateTime": self.end_time, "timeZone": "UTC-5"},
+                "start": {
+                    "dateTime": self.start_time,
+                    "timeZone": "UTC-5"
+                },
+                "end": {
+                    "dateTime": self.end_time,
+                    "timeZone": "UTC-5"
+                },
             }
 
         else:
+            self.start_time = convert_to_rfc3339(self.start_time)
+            self.end_time = convert_to_rfc3339(self.end_time)
+
             metadata = {
                 "summary": self.summary,
                 "description": self.description,
-                "start": {"dateTime": self.start_time, "timeZone": "UTC-5"},
-                "end": {"dateTime": self.end_time, "timeZone": "UTC-5"},
+                "start": {
+                    "dateTime": self.start_time,
+                    "timeZone": "UTC-5"
+                },
+                "end": {
+                    "dateTime": self.end_time,
+                    "timeZone": "UTC-5"
+                },
             }
 
         return metadata
@@ -137,6 +157,25 @@ class Event:
 
 
 def main():
+    # NOTE do not delete this, this is all the shit you need for the google calendar API
+    creds = None
+    # The file token.json stores the user"s access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists("token.json"):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                "credentials.json", SCOPES)
+            creds = flow.run_local_server(port=8000)
+        # Save the credentials for the next run
+        with open("token.json", "w") as token:
+            token.write(creds.to_json())
+
     events = []
     driver = webdriver.Firefox()
     url = "https://leekduck.com/events"
@@ -169,6 +208,8 @@ def main():
 
     # Go to every link, get the end and start dates of the event
     for link in event_links:
+
+        print(f"Parsing {link}... ", end="", flush=True)
 
         driver.get(link)
         soup = BeautifulSoup(driver.page_source, "html5lib")
@@ -213,17 +254,37 @@ def main():
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
+            print(f"\r{GREEN_CHECK_MARK}  Done parsing {link}", end="\n", flush=True)
+
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
             events.append(new_event)
 
-    # TODO ADD GOOGLE SHIT HERE
+    # NOTE THIS IS WHERE WE ADD EVENTS TO THE CALENDAR
+    try:
+        service = build("calendar", "v3", credentials=creds)
 
-    for event in events:
-        # TODO add events that aren't already in google clanedar to google calendar
-        print(event.get_summary())
-        pass
+        # Call the Calendar API
+        events_result = service.events().list(calendarId=POKEMON_CALENDAR_ID, singleEvents=True, orderBy="startTime").execute()
+
+        # We're just gonna use the title of the event to compare it to the list of events we want to add
+        calendar_events = [event["summary"] for event in events_result.get("items", [])]  
+
+        if not calendar_events:
+            print("No upcoming events found.")
+            return
+
+        # If event we parsed is already in our calendar, skip it and go to the next one, otherwise add it to the calendar
+        for event in events:
+            if event.get_summary() in calendar_events:
+                continue
+            metadata = event.to_dict()
+            added_event = service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()
+            added_event_link = added_event.get("htmlLink")
+            print(f"\r{GREEN_CHECK_MARK}  {event.get_summary()} added to calendar {added_event_link}", end="\n", flush=True)
 
 
+    except HttpError as error:
+        print("An error occurred: %s" % error)
 
     driver.quit()
 
