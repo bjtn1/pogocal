@@ -1,6 +1,7 @@
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime
+from unicodedata import normalize
 
 from bs4 import BeautifulSoup
 from dateutil.relativedelta import relativedelta
@@ -121,7 +122,7 @@ class Event:
 
 
 def main():
-    events = defaultdict()
+    events = []
     driver = webdriver.Firefox()
     url = "https://leekduck.com/events"
 
@@ -158,6 +159,7 @@ def main():
         soup = BeautifulSoup(driver.page_source, "html5lib")
 
         title = soup.find("h1").text.strip()  # type: ignore
+        title = normalize("NFKD", title)  # needed because i keep getting "\xa0" on the summary
 
         # Get the event date and start time. Wait 10 secs after going to the website to allow it to load the necessary elements
         start_date = (
@@ -167,9 +169,12 @@ def main():
             .rstrip(",")
             .replace("  ", " ")
         )
-        start_time = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "event-time-start"))
-        ).text.split("M")[0] + "M".replace("  ", " ")
+        start_time = (
+            WebDriverWait(driver, 10)
+            .until(EC.presence_of_element_located((By.ID, "event-time-start")))
+            .text
+            .split("M")[0] + "M".replace("  ", " ")
+        )
 
         complete_start_date = f"{start_date}, {start_time}"
 
@@ -180,20 +185,26 @@ def main():
             .rstrip(",")
             .replace("  ", " ")
         )
-        end_time = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID, "event-time-end"))
-        ).text.split("M")[0] + "M".replace("  ", " ")
+        end_time = (
+            WebDriverWait(driver, 10)
+            .until(EC.presence_of_element_located((By.ID, "event-time-end")))
+            .text
+            .split("M")[0] + "M".replace("  ", " ")
+        )
 
         complete_end_date = f"{end_date}, {end_time}"
 
-        print(f"{link}: {complete_end_date}")
+        # TODO double check that you only add events that have a start and an end date
+        # TODO add the fucking google calendar shit
+        # TODO maybe see if you can add these to notion too? idk
+        print(f"{green_check_mark}  {link}: {complete_start_date} - {complete_end_date}")
 
         if start_date != "None":
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
-            events[link] = new_event
+            events.append(new_event)
 
     for event in events:
         print(event.to_dict())
