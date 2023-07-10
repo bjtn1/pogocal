@@ -241,7 +241,8 @@ def main():
         total_links = len(event_links)
         formatted_links_parsed = f"0{links_parsed}" if links_parsed < 10 else f"{links_parsed}"
 
-        print(f"\r[{formatted_links_parsed}/{total_links}] Parsing {link}... ", end="", flush=True)
+        # NOTE uncomment when you've figured out how to get the print overwrite working
+        # print(f"\r[{formatted_links_parsed}/{total_links}] Parsing {link}... ", end="\r", flush=True)
 
         driver.get(link)
         soup = BeautifulSoup(driver.page_source, "html5lib")
@@ -290,7 +291,8 @@ def main():
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
-            print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", end="", flush=True)
+            # NOTE uncomment when you've figured out how to get the print overwrite working
+            # print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", end="\r", flush=True)
 
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
             events.append(new_event)
@@ -301,7 +303,7 @@ def main():
 
                 metadata = new_event.to_dict()
                 service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()  # Line that actually addds the event to the calendar
-                print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  {new_event.get_summary()}", end="\n", flush=True)
+                print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  {new_event.get_summary()} added to calendar", end="\n", flush=True)
 
             except HttpError as error:
                 print("An error occurred: %s" % error)
