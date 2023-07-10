@@ -15,7 +15,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-# NOTE when the token expires, just go to the credentials tab in google cloud projects, delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0
+# NOTE when the token expires, just go to the credentials tab in google cloud projects,
+# delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0 blah blah
 
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
 
@@ -25,7 +26,6 @@ POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 GREEN_CHECK_MARK = "\U00002705"
-RED_CROSS_MARK = "\U0000274C"
 
 CURRENT_YEAR = datetime.now().year
 
@@ -84,19 +84,17 @@ def convert_to_yyy_mm_dd(date: str):
     return date_object.strftime(yyy_mm_dd_format)
 
 
-@dataclass
 class Event:
-    start_time: str = field(compare=False)
-    end_time: str = field(compare=False)
-    summary: str
-    description: str
+    def __init__(self, start_time, end_time, summary, description):
+        self.summary = summary
+        self.description = description
+        self.metadata = None
 
-    def to_dict(self):
-        if is_all_day_event(self.start_time, self.end_time):
-            self.start_time = convert_to_yyy_mm_dd(self.start_time)
-            self.end_time = convert_to_yyy_mm_dd(self.end_time)
+        if is_all_day_event(start_time, end_time):
+            self.start_time = convert_to_yyy_mm_dd(start_time)
+            self.end_time = convert_to_yyy_mm_dd(end_time)
 
-            metadata = {
+            self.metadata = {
                 "summary": self.summary,
                 "description": self.description,
                 "start": {
@@ -107,17 +105,17 @@ class Event:
                 },
             }
 
-        elif event_ends_next_year(self.start_time, self.end_time):
-            self.start_time = convert_to_rfc3339(self.start_time)
+        elif event_ends_next_year(start_time, end_time):
+            self.start_time = convert_to_rfc3339(start_time)
 
             # add one to end_time's year
-            end_time_date_object = datetime.strptime(self.end_time, "%Y-%m-%d %H:%M:%S")
+            end_time_date_object = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
             end_time_date_object = end_time_date_object + relativedelta(year=1)
 
             self.end_time = end_time_date_object.strftime("%Y-%m-%d %H:%M:%S")
             self.end_time = convert_to_rfc3339(self.end_time)
 
-            metadata = {
+            self.metadata = {
                 "summary": self.summary,
                 "description": self.description,
                 "start": {
@@ -131,10 +129,10 @@ class Event:
             }
 
         else:
-            self.start_time = convert_to_rfc3339(self.start_time)
-            self.end_time = convert_to_rfc3339(self.end_time)
+            self.start_time = convert_to_rfc3339(start_time)
+            self.end_time = convert_to_rfc3339(end_time)
 
-            metadata = {
+            self.metadata = {
                 "summary": self.summary,
                 "description": self.description,
                 "start": {
@@ -146,8 +144,9 @@ class Event:
                     "timeZone": "UTC-5"
                 },
             }
-
-        return metadata
+        
+    def to_dict(self):
+        return self.metadata
 
     def get_summary(self):
         return self.summary
@@ -157,6 +156,12 @@ class Event:
 
 
 def main():
+
+    events = []
+    calendar_events = []
+    driver = webdriver.Firefox()
+    url = "https://leekduck.com/events"
+
     # NOTE do not delete this, this is all the shit you need for the google calendar API
     creds = None
     # The file token.json stores the user"s access and refresh tokens, and is
@@ -176,9 +181,22 @@ def main():
         with open("token.json", "w") as token:
             token.write(creds.to_json())
 
-    events = []
-    driver = webdriver.Firefox()
-    url = "https://leekduck.com/events"
+
+    # Populate calendar_events with event names to be used for comparison
+    # We don't wanna add an event that is already in our calendar
+    try:
+        service = build("calendar", "v3", credentials=creds)
+
+        # Call the Calendar API
+        events_result = service.events().list(calendarId=POKEMON_CALENDAR_ID, singleEvents=True, orderBy="startTime").execute()
+
+        # Retrieve link of every event currently in our calendar
+        # We'll use this to make sure we don't add duplicates
+        calendar_events = [event["description"] for event in events_result.get("items", [])]  
+
+    except HttpError as error:
+        print(f"An error occurred: {error}")
+
 
     # Go to `url`
     driver.get(url)
@@ -198,21 +216,29 @@ def main():
     event_links = set()
 
     # Span refers to each html block containing the <a> tag we're looking for
-    # Let's get rid of all the unannounced events
     for span in soup:
         event_name = span.find("a").get("href")
+
+        # Let's get rid of all the unannounced events
         if "unannounced" in event_name:
             continue
+
         link = f"https://leekduck.com{event_name}"
+
+        # Let's get rid of any and all events that already exist in our calendar
+        if calendar_events and link in calendar_events:
+            continue
+
         event_links.add(link)
 
     # Output formatting sheannigans
-    links_parsed = 0
+    links_parsed = 1
 
     # Go to every link, get the end and start dates of the event
     for link in event_links:
+
         # Output formatting shenanigans
-        total_links = len(event_links) - 1
+        total_links = len(event_links)
         formatted_links_parsed = f"0{links_parsed}" if links_parsed < 10 else f"{links_parsed}"
 
         print(f"\r[{formatted_links_parsed}/{total_links}] Parsing {link}... ", end="", flush=True)
@@ -221,13 +247,14 @@ def main():
         soup = BeautifulSoup(driver.page_source, "html5lib")
 
         title = soup.find("h1").text.strip()  # type: ignore
-        title = normalize("NFKD", title)  # needed because i keep getting "\xa0" on the summary
+        title = normalize("NFKD", title)  # needed because I keep getting "\xa0" on the summary
 
         # Get the event date and start time. Wait 10 secs after going to the website to allow it to load the necessary elements
         start_date = (
             WebDriverWait(driver, 10)
             .until(EC.presence_of_element_located((By.ID, "event-date-start")))
-            .text.strip()
+            .text
+            .strip()
             .rstrip(",")
             .replace("  ", " ")
         )
@@ -235,7 +262,8 @@ def main():
             WebDriverWait(driver, 10)
             .until(EC.presence_of_element_located((By.ID, "event-time-start")))
             .text
-            .split("M")[0] + "M".replace("  ", " ")
+            .split("M")[0] + "M"
+            .replace("  ", " ")
         )
 
         complete_start_date = f"{start_date}, {start_time}"
@@ -243,7 +271,8 @@ def main():
         end_date = (
             WebDriverWait(driver, 10)
             .until(EC.presence_of_element_located((By.ID, "event-date-end")))
-            .text.strip()
+            .text
+            .strip()
             .rstrip(",")
             .replace("  ", " ")
         )
@@ -251,7 +280,8 @@ def main():
             WebDriverWait(driver, 10)
             .until(EC.presence_of_element_located((By.ID, "event-time-end")))
             .text
-            .split("M")[0] + "M".replace("  ", " ")
+            .split("M")[0] + "M"
+            .replace("  ", " ")
         )
 
         complete_end_date = f"{end_date}, {end_time}"
@@ -260,42 +290,26 @@ def main():
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
-
-            print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", flush=True)
+            print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", end="", flush=True)
 
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
             events.append(new_event)
+
+            # NOTE this is where we add the event to our calendar
+            try:
+                service = build("calendar", "v3", credentials=creds)
+
+                metadata = new_event.to_dict()
+                service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()  # Line that actually addds the event to the calendar
+                print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  {new_event.get_summary()}", end="\n", flush=True)
+
+            except HttpError as error:
+                print("An error occurred: %s" % error)
+
             links_parsed += 1
 
-    # NOTE THIS IS WHERE WE ADD EVENTS TO THE CALENDAR
-    exit(0)
-    try:
-        service = build("calendar", "v3", credentials=creds)
-
-        # Call the Calendar API
-        events_result = service.events().list(calendarId=POKEMON_CALENDAR_ID, singleEvents=True, orderBy="startTime").execute()
-
-        # We're just gonna use the title of the event to compare it to the list of events we want to add
-        calendar_events = [event["summary"] for event in events_result.get("items", [])]  
-
-        if not calendar_events:
-            print("No upcoming events found.")
-            return
-
-        # If event we parsed is already in our calendar, skip it and go to the next one, otherwise add it to the calendar
-        for event in events:
-            if event.get_summary() in calendar_events:
-                continue
-            metadata = event.to_dict()
-            added_event = service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()
-            added_event_link = added_event.get("htmlLink")
-            print(f"\r{GREEN_CHECK_MARK}  {event.get_summary()} added to calendar {added_event_link}", end="\n", flush=True)
-
-
-    except HttpError as error:
-        print("An error occurred: %s" % error)
-
     driver.quit()
+
 
 
 if __name__ == "__main__":
