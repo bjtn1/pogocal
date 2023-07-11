@@ -1,4 +1,6 @@
-[Link to the calendar](https://calendar.google.com/calendar/u/0/embed?src=scjnc5gp5gkp5cpravur377d3g@group.calendar.google.com&ctz=America/New_York)
+[Link to the calendar]()
+
+> ❗️ Found a problem where the hour of the events isn't properly being added to the calendar. Calendar being aken down until it is fixed
 
 Pogocal is a program written in python that scrapes the website [https://leekduck.com/events/](https://leekduck.com/events/) using a plethora of APIs and adds Pokemon Go events to my Google calendar using the Google Calendar API
 
