@@ -19,6 +19,7 @@ However, if you wish to re-make this program so that events are added to YOUR pe
 
 1. Clone the repo
 2. Change the `MY_TIMEZONE` to whatever your timezone is
-3. Read the [Google Calendar API documentation](https://developers.google.com/calendar/api/quickstart/python)
-4. ???
-5. PROFIT!!! :D
+3. Change the `POKEMON_GO_CALENDAR_ID` variable to whatever your google calendar ID is
+4. Read the [Google Calendar API documentation](https://developers.google.com/calendar/api/quickstart/python)
+5. ???
+6. PROFIT!!! :D
