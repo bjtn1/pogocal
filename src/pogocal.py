@@ -1,5 +1,4 @@
 import os
-from dataclasses import dataclass, field
 from datetime import datetime
 from unicodedata import normalize
 
@@ -19,6 +18,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0 blah blah
 
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
+MY_TIME_ZONE = "UTC-5"
 
 # If modifying these scopes, delete the file token.json.
 # For a full list of scopes, see 
@@ -120,11 +120,11 @@ class Event:
                 "description": self.description,
                 "start": {
                     "dateTime": self.start_time,
-                    "timeZone": "UTC-5"
+                    "timeZone": MY_TIME_ZONE
                 },
                 "end": {
                     "dateTime": self.end_time,
-                    "timeZone": "UTC-5"
+                    "timeZone": MY_TIME_ZONE
                 },
             }
 
@@ -137,11 +137,11 @@ class Event:
                 "description": self.description,
                 "start": {
                     "dateTime": self.start_time,
-                    "timeZone": "UTC-5"
+                    "timeZone": MY_TIME_ZONE
                 },
                 "end": {
                     "dateTime": self.end_time,
-                    "timeZone": "UTC-5"
+                    "timeZone": MY_TIME_ZONE
                 },
             }
         
@@ -164,7 +164,7 @@ def main():
 
     # NOTE do not delete this, this is all the shit you need for the google calendar API
     creds = None
-    # The file token.json stores the user"s access and refresh tokens, and is
+    # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
     if os.path.exists("token.json"):
