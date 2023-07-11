@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0 blah blah
 
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
-MY_TIME_ZONE = "UTC-5"
+MY_TIMEZONE = "UTC-5"
 
 # If modifying these scopes, delete the file token.json.
 # For a full list of scopes, see 
@@ -123,11 +123,11 @@ class Event:
                 "description": self.description,
                 "start": {
                     "dateTime": self.start_time,
-                    "timeZone": MY_TIME_ZONE
+                    "timeZone": MY_TIMEZONE
                 },
                 "end": {
                     "dateTime": self.end_time,
-                    "timeZone": MY_TIME_ZONE
+                    "timeZone": MY_TIMEZONE
                 },
             }
 
@@ -140,11 +140,11 @@ class Event:
                 "description": self.description,
                 "start": {
                     "dateTime": self.start_time,
-                    "timeZone": MY_TIME_ZONE
+                    "timeZone": MY_TIMEZONE
                 },
                 "end": {
                     "dateTime": self.end_time,
-                    "timeZone": MY_TIME_ZONE
+                    "timeZone": MY_TIMEZONE
                 },
             }
         

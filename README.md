@@ -1,4 +1,4 @@
-<a href="https://calendar.google.com/calendar/u/0/embed?src=scjnc5gp5gkp5cpravur377d3g@group.calendar.google.com&ctz=America/New_York" target="_blank">Link to the calendar</a>
+[Link to the calendar](https://calendar.google.com/calendar/u/0/embed?src=scjnc5gp5gkp5cpravur377d3g@group.calendar.google.com&ctz=America/New_York)
 
 Pogocal is a program written in python that scrapes the website [https://leekduck.com/events/](https://leekduck.com/events/) using a plethora of APIs and adds Pokemon Go events to my Google calendar using the Google Calendar API
 
@@ -17,4 +17,8 @@ However, if you wish to re-make this program so that events are added to YOUR pe
 
 ## Steps for replication...
 
-Clone the repo
+1. Clone the repo
+2. Change the `MY_TIMEZONE` to whatever your timezone is
+3. Read the [Google Calendar API documentation](https://developers.google.com/calendar/api/quickstart/python)
+4. ???
+5. PROFIT!!! :D
