@@ -211,10 +211,7 @@ def main():
     soup = soup.find_all("div", class_="current-events")[0]
 
     # List of all the spans under <div class="events-list" "current-events">
-    soup = soup.find_all(
-        "span",
-        class_="event-header-item-wrapper"
-    )
+    soup = soup.find_all("span", class_="event-header-item-wrapper")
 
     event_links = set()
 
