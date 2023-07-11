@@ -1,3 +1,6 @@
+"""
+@author: Brandon Jose Tenorio Noguera
+"""
 import os
 from datetime import datetime
 from unicodedata import normalize
