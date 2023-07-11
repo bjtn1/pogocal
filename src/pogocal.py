@@ -2,7 +2,7 @@
 @author: Brandon Jose Tenorio Noguera
 """
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from unicodedata import normalize
 
 from bs4 import BeautifulSoup
@@ -21,7 +21,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0 blah blah
 
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
-MY_TIMEZONE = "UTC-5"
+MY_TIMEZONE = "America/New_York"
 
 # If modifying these scopes, delete the file token.json.
 # For a full list of scopes, see 
@@ -291,18 +291,19 @@ def main():
             parsed_start_date = parse_date(complete_start_date)
             parsed_end_date = parse_date(complete_end_date)
 
-            # NOTE uncomment when you've figured out how to get the print overwrite working
-            # print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  Done parsing {link}", end="\r", flush=True)
-
+            # This is where we create a new event using the info we parsed
             new_event = Event(parsed_start_date, parsed_end_date, title, link)
+
             events.append(new_event)
 
-            # NOTE this is where we add the event to our calendar
+            # This is where we add the event to our calendar
             try:
                 service = build("calendar", "v3", credentials=creds)
-
                 metadata = new_event.to_dict()
-                service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()  # Line that actually addds the event to the calendar
+
+                # This is where we actually add the event to our calendar
+                service.events().insert(calendarId=POKEMON_CALENDAR_ID, body=metadata).execute()  
+
                 print(f"\r[{formatted_links_parsed}/{total_links}] {GREEN_CHECK_MARK}  {new_event.get_summary()} added to calendar", end="\n", flush=True)
 
             except HttpError as error:
