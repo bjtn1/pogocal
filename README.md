@@ -1,4 +1,4 @@
-[Link to the calendar](https://leekduck.com/events/pokemonspotlighthour2023-07-11/)
+[Link to the calendar](https://calendar.google.com/calendar/u/0/embed?src=scjnc5gp5gkp5cpravur377d3g@group.calendar.google.com&ctz=America/New_York)
 
 Pogocal is a program written in python that scrapes the website [https://leekduck.com/events/](https://leekduck.com/events/) using a plethora of APIs and adds Pokemon Go events to my Google calendar using the Google Calendar API
 
