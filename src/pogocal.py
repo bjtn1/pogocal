@@ -159,12 +159,6 @@ class Event:
 
 
 def main():
-
-    events = []
-    calendar_events = []
-    driver = webdriver.Firefox()
-    url = "https://leekduck.com/events"
-
     # NOTE do not delete this, this is all the shit you need for the google calendar API
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
@@ -184,6 +178,10 @@ def main():
         with open("token.json", "w") as token:
             token.write(creds.to_json())
 
+    events = []
+    calendar_events = []
+    driver = webdriver.Firefox()
+    url = "https://leekduck.com/events"
 
     # Populate calendar_events with event names to be used for comparison
     # We don't wanna add an event that is already in our calendar
