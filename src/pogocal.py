@@ -1,24 +1,24 @@
 """
 @author: Brandon Jose Tenorio Noguera
 """
+import json
 import os
 from datetime import datetime, timezone
 from unicodedata import normalize
 
 from bs4 import BeautifulSoup
+from dateutil import parser
 from dateutil.relativedelta import relativedelta
-from google.auth.transport.requests import Request
+from google.auth.transport.requests import Request, exceptions
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from oauthlib.oauth2.rfc6749 import errors
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
-# NOTE when the token expires, just go to the credentials tab in google cloud projects,
-# delete the old OAuth 2.0 client ID, create a new credential, and change the port to 8000 then back to 0 blah blah
 
 POKEMON_CALENDAR_ID = os.environ.get("POKEMON_CALENDAR_ID")
 MY_TIMEZONE = "America/New_York"
@@ -31,6 +31,8 @@ SCOPES = ["https://www.googleapis.com/auth/calendar"]
 GREEN_CHECK_MARK = "\U00002705"
 
 CURRENT_YEAR = datetime.now().year
+
+PORT = 8000
 
 
 def parse_date(date: str) -> str:
@@ -169,11 +171,15 @@ def main():
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
+            try:
+                creds.refresh(Request())
+            except exceptions.RefreshError as error:
+                print(f"Token expired. Do this:\n1.) Go to console.cloud.google.com\n2.) Go to APIs & Services\n3.) Go to Credentials\n4.) Delete all creds under OAuth 2.0 Client IDs\n5.) Create Credentials -> OAuth Client ID -> Desktop app -> Create\n6.) Download json\n7.) Delete credentials.json and token.json found in ~/Workspace/pogocal/\n8.) Move the .json file from step 6 into ~/Workspace/pogocal/ and rename it to credentials.json")
+                exit(0)
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 "credentials.json", SCOPES)
-            creds = flow.run_local_server(port=8000)
+            creds = flow.run_local_server(port=PORT)
         # Save the credentials for the next run
         with open("token.json", "w") as token:
             token.write(creds.to_json())
