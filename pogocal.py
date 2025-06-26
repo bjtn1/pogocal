@@ -3,20 +3,21 @@
 """
 import curses
 from curses import wrapper
-import requests
+import urllib.request
 import json
 from datetime import datetime, timezone
 
 # TODO
-# [ ] 1) Turn right_win into top_right_win
-# [ ] 2) Add a banner at the top of top_right_win that says (Event info)
-# [ ] 3) Add a bottom_right_win that has all the "added events"
-# [ ] 4) Add a banner to bottom right window
-# [ ] 5) Add a `?` button that displays navigation command and shit 
-# [ ] 6) Add `a` to display a new window asking the user to confirm their event selection
-# [ ] 7) Add functionality to turn desired_events into a .ics file
-# [x] 8) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
-# [x] 9) Let's make the going down/going up thingie loop instead of coding a hard barrier
+# [ ] 01) Turn right_win into top_right_win
+# [ ] 02) Add a banner at the top of top_right_win that says (Event info)
+# [ ] 03) Add a bottom_right_win that has all the "added events"
+# [ ] 04) Add a banner to bottom right window
+# [ ] 05) Add a `?` button that displays navigation command and shit 
+# [ ] 06) Add `a` to display a new window asking the user to confirm their event selection
+# [ ] 07) Add functionality to turn desired_events into a .ics file
+# [x] 08) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
+# [x] 09) Let's make the going down/going up thingie loop instead of coding a hard barrier
+# [x] 10) Move away from `requests` and just use the python stdlib (urllib3)
 
 # NOTE
 # 1) desired_events should store the name of the event (to be printed to bottom_right_win) and the index of the event in `events` to access it later
@@ -27,7 +28,8 @@ from datetime import datetime, timezone
 CHECK = u'\u2713'
 
 def get_events():
-    return requests.get("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json").json()
+    with urllib.request.urlopen("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json") as response:
+        return json.load(response)
 
 def get_lines_to_print(event_data):
     lines_to_print = []
