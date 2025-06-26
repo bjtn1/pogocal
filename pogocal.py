@@ -21,6 +21,9 @@ from datetime import datetime, timezone
 # NOTE
 # 1) desired_events should store the name of the event (to be printed to bottom_right_win) and the index of the event in `events` to access it later
 
+# FIX
+# [x] 1) Start and end time seem to be the same for every event, why?
+
 CHECK = u'\u2713'
 
 def get_events():
@@ -39,27 +42,23 @@ def get_lines_to_print(event_data):
 
     if event_start_time_str.endswith("Z") :
         event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-        utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_start_timestamp = utc_dt.timestamp()
-        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
     else:
         event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-        event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_start_timestamp = event_start_utc_dt.timestamp()
-        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+    event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+    event_start_timestamp = event_start_utc_dt.timestamp()
+    event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
 
     event_end_time_str = event_data["end"]
 
     if event_end_time_str.endswith("Z") :
         event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-        event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
-        event_end_timestamp = event_end_utc_dt.timestamp()
-        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
     else:
-        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-        event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_end_timestamp = event_end_utc_dt.timestamp()
-        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+        event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+
+    event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
+    event_end_timestamp = event_end_utc_dt.timestamp()
+    event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
 
     lines_to_print.append(f"{event_name}")
     lines_to_print.append(f"{event_link}")
