@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 # [ ] 5) Add a `?` button that displays navigation command and shit 
 # [ ] 6) Add `a` to display a new window asking the user to confirm their event selection
 # [ ] 7) Add functionality to turn desired_events into a .ics file
-# [ ] 8) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
+# [x] 8) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
 # [x] 9) Let's make the going down/going up thingie loop instead of coding a hard barrier
 
 # NOTE
@@ -25,6 +25,49 @@ CHECK = u'\u2713'
 
 def get_events():
     return requests.get("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json").json()
+
+def get_lines_to_print(event_data):
+    lines_to_print = []
+
+    event_name = event_data["name"]
+    event_link = event_data["link"]
+
+    # if start or end time end in "Z", convert ISO8601 to UTC
+    # otherwise, convert ISO8601 to user's local time
+
+    event_start_time_str = event_data["start"]
+
+    if event_start_time_str.endswith("Z") :
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+        utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_start_timestamp = utc_dt.timestamp()
+        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    else:
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+        event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_start_timestamp = event_start_utc_dt.timestamp()
+        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+    event_end_time_str = event_data["end"]
+
+    if event_end_time_str.endswith("Z") :
+        event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+        event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
+        event_end_timestamp = event_end_utc_dt.timestamp()
+        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    else:
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+        event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_end_timestamp = event_end_utc_dt.timestamp()
+        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+    lines_to_print.append(f"{event_name}")
+    lines_to_print.append(f"{event_link}")
+    lines_to_print.append(f"{event_start_formatted}")
+    lines_to_print.append(f"{event_end_formatted}")
+
+    return lines_to_print
+
 
 def curse(stdscr):
     curses.curs_set(True)
@@ -74,44 +117,7 @@ def curse(stdscr):
     # these lines print the event data onto right_win
     event_data = events[cursor_y - 1]
 
-    lines_to_print = []
-
-    event_name = event_data["name"]
-    event_link = event_data["link"]
-
-    # if start or end time end in "Z", convert ISO8601 to UTC
-    # otherwise, convert ISO8601 to user's local time
-
-    event_start_time_str = event_data["start"]
-
-    if event_start_time_str.endswith("Z") :
-        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-        utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_start_timestamp = utc_dt.timestamp()
-        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-    else:
-        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-        event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_start_timestamp = event_start_utc_dt.timestamp()
-        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-    event_end_time_str = event_data["end"]
-
-    if event_end_time_str.endswith("Z") :
-        event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-        event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
-        event_end_timestamp = event_end_utc_dt.timestamp()
-        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-    else:
-        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-        event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-        event_end_timestamp = event_end_utc_dt.timestamp()
-        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-    lines_to_print.append(f"{event_name}")
-    lines_to_print.append(f"{event_link}")
-    lines_to_print.append(f"{event_start_formatted}")
-    lines_to_print.append(f"{event_end_formatted}")
+    lines_to_print = get_lines_to_print(event_data)
 
     # print the data onto the right window while staying within the border
     for i, line in enumerate(lines_to_print):
@@ -145,44 +151,7 @@ def curse(stdscr):
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
 
-            lines_to_print = []
-
-            event_name = event_data["name"]
-            event_link = event_data["link"]
-
-            # if start or end time end in "Z", convert ISO8601 to UTC
-            # otherwise, convert ISO8601 to user's local time
-
-            event_start_time_str = event_data["start"]
-
-            if event_start_time_str.endswith("Z") :
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-                utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_start_timestamp = utc_dt.timestamp()
-                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-            else:
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-                event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_start_timestamp = event_start_utc_dt.timestamp()
-                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-            event_end_time_str = event_data["end"]
-
-            if event_end_time_str.endswith("Z") :
-                event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-                event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
-                event_end_timestamp = event_end_utc_dt.timestamp()
-                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-            else:
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-                event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_end_timestamp = event_end_utc_dt.timestamp()
-                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-            lines_to_print.append(f"{event_name}")
-            lines_to_print.append(f"{event_link}")
-            lines_to_print.append(f"{event_start_formatted}")
-            lines_to_print.append(f"{event_end_formatted}")
+            lines_to_print = get_lines_to_print(event_data)
 
             # print the data onto the right window while staying within the border
             for i, line in enumerate(lines_to_print):
@@ -211,44 +180,7 @@ def curse(stdscr):
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
 
-            lines_to_print = []
-
-            event_name = event_data["name"]
-            event_link = event_data["link"]
-
-            # if start or end time end in "Z", convert ISO8601 to UTC
-            # otherwise, convert ISO8601 to user's local time
-
-            event_start_time_str = event_data["start"]
-
-            if event_start_time_str.endswith("Z") :
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-                utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_start_timestamp = utc_dt.timestamp()
-                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-            else:
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-                event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_start_timestamp = event_start_utc_dt.timestamp()
-                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-            event_end_time_str = event_data["end"]
-
-            if event_end_time_str.endswith("Z") :
-                event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
-                event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
-                event_end_timestamp = event_end_utc_dt.timestamp()
-                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-            else:
-                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
-                event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
-                event_end_timestamp = event_end_utc_dt.timestamp()
-                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-
-            lines_to_print.append(f"{event_name}")
-            lines_to_print.append(f"{event_link}")
-            lines_to_print.append(f"{event_start_formatted}")
-            lines_to_print.append(f"{event_end_formatted}")
+            lines_to_print = get_lines_to_print(event_data)
 
             # print the data onto the right window while staying within the border
             for i, line in enumerate(lines_to_print):
