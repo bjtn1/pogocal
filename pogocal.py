@@ -5,15 +5,18 @@ import curses
 from curses import wrapper
 import requests
 import json
+from datetime import datetime, timezone
 
 # TODO
-# 1) Turn right_win into top_right_win
-# 2) Add a banner at the top of top_right_win that says (Event info)
-# 3) Add a bottom_right_win that has all the "added events"
-# 4) Add a banner to bottom right window
-# 5) Add a `?` button that displays navigation command and shit 
-# 6) Add `a` to display a new window asking the user to confirm their event selection
-# 7) Add functionality to turn desired_events into a .ics file
+# [ ] 1) Turn right_win into top_right_win
+# [ ] 2) Add a banner at the top of top_right_win that says (Event info)
+# [ ] 3) Add a bottom_right_win that has all the "added events"
+# [ ] 4) Add a banner to bottom right window
+# [ ] 5) Add a `?` button that displays navigation command and shit 
+# [ ] 6) Add `a` to display a new window asking the user to confirm their event selection
+# [ ] 7) Add functionality to turn desired_events into a .ics file
+# [ ] 8) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
+# [x] 9) Let's make the going down/going up thingie loop instead of coding a hard barrier
 
 # NOTE
 # 1) desired_events should store the name of the event (to be printed to bottom_right_win) and the index of the event in `events` to access it later
@@ -67,24 +70,70 @@ def curse(stdscr):
     cursor_x = 2
     left_win.move(cursor_y, cursor_x)
 
-    # display the 1st event on the right window right away
-    event_data = json.dumps(events[cursor_y - 1], indent=4).splitlines()
+    # print the 1st event
+    # these lines print the event data onto right_win
+    event_data = events[cursor_y - 1]
+
+    lines_to_print = []
+
+    event_name = event_data["name"]
+    event_link = event_data["link"]
+
+    # if start or end time end in "Z", convert ISO8601 to UTC
+    # otherwise, convert ISO8601 to user's local time
+
+    event_start_time_str = event_data["start"]
+
+    if event_start_time_str.endswith("Z") :
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+        utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_start_timestamp = utc_dt.timestamp()
+        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    else:
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+        event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_start_timestamp = event_start_utc_dt.timestamp()
+        event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+    event_end_time_str = event_data["end"]
+
+    if event_end_time_str.endswith("Z") :
+        event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+        event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
+        event_end_timestamp = event_end_utc_dt.timestamp()
+        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+    else:
+        event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+        event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+        event_end_timestamp = event_end_utc_dt.timestamp()
+        event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+    lines_to_print.append(f"{event_name}")
+    lines_to_print.append(f"{event_link}")
+    lines_to_print.append(f"{event_start_formatted}")
+    lines_to_print.append(f"{event_end_formatted}")
 
     # print the data onto the right window while staying within the border
-    for i, line in enumerate(event_data):
+    for i, line in enumerate(lines_to_print):
         # only print this line if it will fit inside the window without overwriting the bottom border
         if i + 1 < right_win.getmaxyx()[0] - 1:
             # print while avoiding overflow horizontally
             right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
+
+    lines_to_print.clear()
+
     right_win.refresh()
 
     while True:
         c = left_win.getch()
 
         if c == curses.KEY_UP or c == ord('k'):
-            cursor_y -= 1
-            # prevent the user from going out of bounds
-            cursor_y = max(1, min(cursor_y, len(events)))
+            # loop the cursor if we're at the 1st event and hit KEY_UP
+            if cursor_y == 1:
+                cursor_y = len(events)
+            else:
+                cursor_y -= 1
+
             left_win.move(cursor_y, cursor_x)
 
             # print the event's info on the right window
@@ -93,35 +142,122 @@ def curse(stdscr):
             right_win.erase()
             right_win.border()
 
-            event_data = json.dumps(events[cursor_y - 1], indent=4).splitlines()
+            # these lines print the event data onto right_win
+            event_data = events[cursor_y - 1]
+
+            lines_to_print = []
+
+            event_name = event_data["name"]
+            event_link = event_data["link"]
+
+            # if start or end time end in "Z", convert ISO8601 to UTC
+            # otherwise, convert ISO8601 to user's local time
+
+            event_start_time_str = event_data["start"]
+
+            if event_start_time_str.endswith("Z") :
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+                utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_start_timestamp = utc_dt.timestamp()
+                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+                event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_start_timestamp = event_start_utc_dt.timestamp()
+                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+            event_end_time_str = event_data["end"]
+
+            if event_end_time_str.endswith("Z") :
+                event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+                event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
+                event_end_timestamp = event_end_utc_dt.timestamp()
+                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+                event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_end_timestamp = event_end_utc_dt.timestamp()
+                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+            lines_to_print.append(f"{event_name}")
+            lines_to_print.append(f"{event_link}")
+            lines_to_print.append(f"{event_start_formatted}")
+            lines_to_print.append(f"{event_end_formatted}")
 
             # print the data onto the right window while staying within the border
-            for i, line in enumerate(event_data):
+            for i, line in enumerate(lines_to_print):
                 # only print this line if it will fit inside the window without overwriting the bottom border
                 if i + 1 < right_win.getmaxyx()[0] - 1:
                     # print while avoiding overflow horizontally
                     right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
 
+            lines_to_print.clear()
+
             right_win.refresh()
 
         elif c == curses.KEY_DOWN or c == ord('j'):
-            cursor_y += 1
-            # prevent the user from going out of bounds
-            cursor_y = max(1, min(cursor_y, len(events)))
+            # loop the cursor if we're at the last event and hit KEY_DOWN
+            if cursor_y == len(events):
+                cursor_y = 1
+            else:
+                cursor_y += 1
+
             left_win.move(cursor_y, cursor_x)
 
             # clear previous text without clearing border
             right_win.erase()
             right_win.border()
 
-            event_data = json.dumps(events[cursor_y - 1], indent=4).splitlines()
+            # these lines print the event data onto right_win
+            event_data = events[cursor_y - 1]
+
+            lines_to_print = []
+
+            event_name = event_data["name"]
+            event_link = event_data["link"]
+
+            # if start or end time end in "Z", convert ISO8601 to UTC
+            # otherwise, convert ISO8601 to user's local time
+
+            event_start_time_str = event_data["start"]
+
+            if event_start_time_str.endswith("Z") :
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+                utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_start_timestamp = utc_dt.timestamp()
+                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+                event_start_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_start_timestamp = event_start_utc_dt.timestamp()
+                event_start_formatted = datetime.fromtimestamp(event_start_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+            event_end_time_str = event_data["end"]
+
+            if event_end_time_str.endswith("Z") :
+                event_end_time_dt = datetime.strptime(event_end_time_str, "%Y-%m-%dT%H:%M:%S.%f%z")
+                event_end_utc_dt = event_end_time_dt.astimezone(timezone.utc)
+                event_end_timestamp = event_end_utc_dt.timestamp()
+                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                event_start_time_dt = datetime.strptime(event_start_time_str, "%Y-%m-%dT%H:%M:%S.%f")
+                event_end_utc_dt = event_start_time_dt.astimezone(timezone.utc)
+                event_end_timestamp = event_end_utc_dt.timestamp()
+                event_end_formatted = datetime.fromtimestamp(event_end_timestamp).strftime("%Y-%m-%d %H:%M:%S")
+
+            lines_to_print.append(f"{event_name}")
+            lines_to_print.append(f"{event_link}")
+            lines_to_print.append(f"{event_start_formatted}")
+            lines_to_print.append(f"{event_end_formatted}")
 
             # print the data onto the right window while staying within the border
-            for i, line in enumerate(event_data):
+            for i, line in enumerate(lines_to_print):
                 # only print this line if it will fit inside the window without overwriting the bottom border
                 if i + 1 < right_win.getmaxyx()[0] - 1:
                     # print while avoiding overflow horizontally
                     right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
+
+            lines_to_print.clear()
 
             right_win.refresh()
 
