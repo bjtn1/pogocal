@@ -114,6 +114,12 @@ def curse(stdscr):
     left_win.keypad(True)
     # top_right_win.keypad(True)
 
+    # add top_right_win's border title
+    top_right_win_title = f"EVENT INFO"
+    centered_top_right_win_title_start_x = top_right_win_width // 2 - len(top_right_win_title)
+    # we do `0` to signify start_y because top right win starts at stdscr.y=0 (thats where the border is)
+    top_right_win.addstr(0, centered_top_right_win_title_start_x, top_right_win_title)
+
     # TODO
     # add functionality for scrolling
     left_win_max_y,left_win_max_x = left_win.getmaxyx()
