@@ -33,6 +33,15 @@ def get_events():
     with urllib.request.urlopen("https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json") as response:
         return json.load(response)
 
+
+def add_title_to_top_center_window(title, win):
+    win_width = win.getmaxyx()[1]
+    start_y = 0
+    start_x = (win_width - len(title)) // 2
+    win.addstr(start_y, start_x, title, curses.A_STANDOUT)
+    win.refresh()
+
+
 def get_lines_to_print(event_data):
     lines_to_print = []
 
@@ -88,6 +97,16 @@ def curse(stdscr):
     # this is where we'll saved desired events
     desired_events = []
 
+    #####################################
+    #                                   #
+    # Creating main windows and borders #
+    #                                   #
+    #####################################
+
+
+    #########################
+    #    LEFT WINDOW        #
+    #########################
     # draw left window's borders
     start_y = 4
     left_win_height = curses.LINES - start_y
@@ -99,6 +118,15 @@ def curse(stdscr):
     # draw the border
     left_win.border()
 
+    # enable keypad on left_window (needed for navigation)
+    left_win.keypad(True)
+
+    # add left_win's border title
+    add_title_to_top_center_window("EVENTS", left_win)
+
+    #########################
+    #    TOP RIGHT WINDOW   #
+    #########################
     # draw top right window's borders
     # we do 4 + 2 because the border will take up 2 spaces, and we only print out 4 things onto the window
     top_right_win_height = 4 + 2
@@ -107,24 +135,27 @@ def curse(stdscr):
     # create the window
     top_right_win = curses.newwin(top_right_win_height, top_right_win_width, start_y, top_right_win_width)
 
-    # draw the border
+    # draw top_right_win border
     top_right_win.border()
 
-    # enable keypad on left_window (needed for navigation)
-    left_win.keypad(True)
-    # top_right_win.keypad(True)
-
     # add top_right_win's border title
-    top_right_win_title = f"EVENT INFO"
-    centered_top_right_win_title_start_x = top_right_win_width // 2 - len(top_right_win_title)
-    # we do `0` to signify start_y because top right win starts at stdscr.y=0 (thats where the border is)
-    top_right_win.addstr(0, centered_top_right_win_title_start_x, top_right_win_title, curses.A_STANDOUT)
+    add_title_to_top_center_window("EVENT INFO", top_right_win)
 
-    # add left_win's border title
-    left_win_title = f"EVENTS"
-    centered_left_win_title_start_x = left_win_width // 2 - len(left_win_title)
-    # we do `0` to signify start_y because top right win starts at stdscr.y=0 (thats where the border is)
-    left_win.addstr(0, centered_left_win_title_start_x, left_win_title, curses.A_STANDOUT)
+    #########################
+    #    BOT RIGHT WINDOW   #
+    #########################
+    # get bot_right_win dimensions
+    bot_right_win_height = left_win_height - top_right_win_height
+    bot_right_win_width = top_right_win_width
+    
+    # create bottom right window
+    bot_right_win = curses.newwin(bot_right_win_height, bot_right_win_width, start_y + top_right_win_height, bot_right_win_width)
+
+    # draw bot_right_win border
+    bot_right_win.border()
+
+    add_title_to_top_center_window("DESIRED EVENTS", bot_right_win)
+
 
     # TODO
     # add functionality for scrolling
@@ -142,6 +173,7 @@ def curse(stdscr):
     # refresh to see changes made
     left_win.refresh()
     top_right_win.refresh()
+    bot_right_win.refresh()
 
     # Start cursor at first event checkbox
     cursor_y = 1
