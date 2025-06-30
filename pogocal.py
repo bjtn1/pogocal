@@ -118,7 +118,13 @@ def curse(stdscr):
     top_right_win_title = f"EVENT INFO"
     centered_top_right_win_title_start_x = top_right_win_width // 2 - len(top_right_win_title)
     # we do `0` to signify start_y because top right win starts at stdscr.y=0 (thats where the border is)
-    top_right_win.addstr(0, centered_top_right_win_title_start_x, top_right_win_title)
+    top_right_win.addstr(0, centered_top_right_win_title_start_x, top_right_win_title, curses.A_STANDOUT)
+
+    # add left_win's border title
+    left_win_title = f"EVENTS"
+    centered_left_win_title_start_x = left_win_width // 2 - len(left_win_title)
+    # we do `0` to signify start_y because top right win starts at stdscr.y=0 (thats where the border is)
+    left_win.addstr(0, centered_left_win_title_start_x, left_win_title, curses.A_STANDOUT)
 
     # TODO
     # add functionality for scrolling
