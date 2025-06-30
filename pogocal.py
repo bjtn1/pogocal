@@ -27,6 +27,9 @@ from datetime import datetime, timezone
 # [ ] 2) Printing events on left screen fails if there are more events than space on the screen
 #        We should implement scrolling on the left window only
 
+# BUG
+# [ ] 1) top_right_win loses title whenever contents change
+
 CHECK = u'\u2713'
 
 def get_events():
@@ -215,6 +218,9 @@ def curse(stdscr):
             top_right_win.erase()
             top_right_win.border()
 
+            # add top_right_win's border title (gets removed after calling erase)
+            add_title_to_top_center_window("EVENT INFO", top_right_win)
+
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
 
@@ -243,6 +249,9 @@ def curse(stdscr):
             # clear previous text without clearing border
             top_right_win.erase()
             top_right_win.border()
+
+            # add top_right_win's border title (gets removed after calling erase)
+            add_title_to_top_center_window("EVENT INFO", top_right_win)
 
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
