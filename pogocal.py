@@ -8,16 +8,17 @@ import json
 from datetime import datetime, timezone
 
 # TODO
-# [ ] 01) Turn right_win into top_right_win
-# [ ] 02) Add a banner at the top of top_right_win that says (Event info)
-# [ ] 03) Add a bottom_right_win that has all the "added events"
-# [ ] 04) Add a banner to bottom right window
+# [x] 01) Turn right_win into top_right_win
+# [x] 02) Add a banner at the top of top_right_win that says (Event info)
+# [x] 03) Add a bottom_right_win that has all the "added events"
+# [x] 04) Add a banner to bottom right window
 # [ ] 05) Add a `?` button that displays navigation command and shit 
 # [ ] 06) Add `a` to display a new window asking the user to confirm their event selection
 # [ ] 07) Add functionality to turn desired_events into a .ics file
 # [x] 08) Turn the printing of the event's info onto the right_win into its own function (we use it too much)
 # [x] 09) Let's make the going down/going up thingie loop instead of coding a hard barrier
 # [x] 10) Move away from `requests` and just use the python stdlib (urllib3)
+# [ ] 11) add functionality for scrolling
 
 # NOTE
 # 1) desired_events should store the name of the event (to be printed to bottom_right_win) and the index of the event in `events` to access it later
@@ -28,7 +29,7 @@ from datetime import datetime, timezone
 #        We should implement scrolling on the left window only
 
 # BUG
-# [ ] 1) top_right_win loses title whenever contents change
+# [x] 1) top_right_win loses title whenever contents change
 
 CHECK = u'\u2713'
 
@@ -159,19 +160,15 @@ def curse(stdscr):
 
     add_title_to_top_center_window("DESIRED EVENTS", bot_right_win)
 
-
-    # TODO
-    # add functionality for scrolling
-    left_win_max_y,left_win_max_x = left_win.getmaxyx()
-
-
-    # draw events onto left window
-    # FIX
-    # this fails if there are more events than space on the screen
-    for i, e in enumerate(events):
-        name_part = e["name"]
-        if i < 43:
-            left_win.addstr(i+1, 1, f"[ ] {i+1:02d}: {name_part}")
+    ###############
+    # DRAW EVENTS #
+    ###############
+    # `y_slot` refers to s free "line" in an arbitrary y coordinate of left_win
+    # `in range...` this effectively gives us access to all y coordinates of free space between [1, left_win_height)
+    # `events[y_slot - 1]` gets the hashmap of the yth event starting from 0 (thats the y_slot - 1)
+    for y_slot in range(1, left_win_height - 1):
+        event_name = events[y_slot - 1]["name"]
+        left_win.addstr(y_slot, 1, f"[ ] {y_slot:02d}: {event_name}")
 
     # refresh to see changes made
     left_win.refresh()
