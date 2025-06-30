@@ -24,6 +24,8 @@ from datetime import datetime, timezone
 
 # FIX
 # [x] 1) Start and end time seem to be the same for every event, why?
+# [ ] 2) Printing events on left screen fails if there are more events than space on the screen
+#        We should implement scrolling on the left window only
 
 CHECK = u'\u2713'
 
@@ -86,28 +88,48 @@ def curse(stdscr):
     # this is where we'll saved desired events
     desired_events = []
 
+    # draw left window's borders
     start_y = 4
-    win_height = curses.LINES - start_y
-    win_width = curses.COLS // 2
+    left_win_height = curses.LINES - start_y
+    left_win_width = curses.COLS // 2
 
-    left_win = curses.newwin(win_height, win_width, start_y, 0)
-    right_win = curses.newwin(win_height, win_width, start_y, win_width)
+    # create the window
+    left_win = curses.newwin(left_win_height, left_win_width, start_y, 0)
 
-    left_win.keypad(True)
-    # right_win.keypad(True)
-
-    # draw border
+    # draw the border
     left_win.border()
-    right_win.border()
+
+    # draw top right window's borders
+    # we do 4 + 2 because the border will take up 2 spaces, and we only print out 4 things onto the window
+    top_right_win_height = 4 + 2
+    top_right_win_width = curses.COLS // 2
+
+    # create the window
+    top_right_win = curses.newwin(top_right_win_height, top_right_win_width, start_y, top_right_win_width)
+
+    # draw the border
+    top_right_win.border()
+
+    # enable keypad on left_window (needed for navigation)
+    left_win.keypad(True)
+    # top_right_win.keypad(True)
+
+    # TODO
+    # add functionality for scrolling
+    left_win_max_y,left_win_max_x = left_win.getmaxyx()
+
 
     # draw events onto left window
+    # FIX
+    # this fails if there are more events than space on the screen
     for i, e in enumerate(events):
         name_part = e["name"]
-        left_win.addstr(i + 1, 1, f"[ ] {i+1:02d}: {name_part}")
+        if i < 43:
+            left_win.addstr(i+1, 1, f"[ ] {i+1:02d}: {name_part}")
 
     # refresh to see changes made
     left_win.refresh()
-    right_win.refresh()
+    top_right_win.refresh()
 
     # Start cursor at first event checkbox
     cursor_y = 1
@@ -123,13 +145,13 @@ def curse(stdscr):
     # print the data onto the right window while staying within the border
     for i, line in enumerate(lines_to_print):
         # only print this line if it will fit inside the window without overwriting the bottom border
-        if i + 1 < right_win.getmaxyx()[0] - 1:
+        if i + 1 < top_right_win.getmaxyx()[0] - 1:
             # print while avoiding overflow horizontally
-            right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
+            top_right_win.addstr(i + 1, 1, line[:top_right_win.getmaxyx()[1] - 2])
 
     lines_to_print.clear()
 
-    right_win.refresh()
+    top_right_win.refresh()
 
     while True:
         c = left_win.getch()
@@ -146,8 +168,8 @@ def curse(stdscr):
             # print the event's info on the right window
             # cursor_y = 1 would print the 0th event in events
             # clear previous text without clearing border
-            right_win.erase()
-            right_win.border()
+            top_right_win.erase()
+            top_right_win.border()
 
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
@@ -157,13 +179,13 @@ def curse(stdscr):
             # print the data onto the right window while staying within the border
             for i, line in enumerate(lines_to_print):
                 # only print this line if it will fit inside the window without overwriting the bottom border
-                if i + 1 < right_win.getmaxyx()[0] - 1:
+                if i + 1 < top_right_win.getmaxyx()[0] - 1:
                     # print while avoiding overflow horizontally
-                    right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
+                    top_right_win.addstr(i + 1, 1, line[:top_right_win.getmaxyx()[1] - 2])
 
             lines_to_print.clear()
 
-            right_win.refresh()
+            top_right_win.refresh()
 
         elif c == curses.KEY_DOWN or c == ord('j'):
             # loop the cursor if we're at the last event and hit KEY_DOWN
@@ -175,8 +197,8 @@ def curse(stdscr):
             left_win.move(cursor_y, cursor_x)
 
             # clear previous text without clearing border
-            right_win.erase()
-            right_win.border()
+            top_right_win.erase()
+            top_right_win.border()
 
             # these lines print the event data onto right_win
             event_data = events[cursor_y - 1]
@@ -186,13 +208,13 @@ def curse(stdscr):
             # print the data onto the right window while staying within the border
             for i, line in enumerate(lines_to_print):
                 # only print this line if it will fit inside the window without overwriting the bottom border
-                if i + 1 < right_win.getmaxyx()[0] - 1:
+                if i + 1 < top_right_win.getmaxyx()[0] - 1:
                     # print while avoiding overflow horizontally
-                    right_win.addstr(i + 1, 1, line[:right_win.getmaxyx()[1] - 2])
+                    top_right_win.addstr(i + 1, 1, line[:top_right_win.getmaxyx()[1] - 2])
 
             lines_to_print.clear()
 
-            right_win.refresh()
+            top_right_win.refresh()
 
         # we do this bc sometimes enter gets interpreted as a 10 or 13
         elif c in (curses.KEY_ENTER, 10, 13):
